@@ -11,40 +11,38 @@ public class User extends Person {
     }
 
     public static void userInformations(){
-        enterName();
-        enterEmail();
-        enterAge();
-        enterHeight();
+        String name = enterName();
+        String email= enterEmail();
+        int age = enterAge();
+        float height = enterHeight();
+        User user = new User(name,email,age,height);
     }
 
-    public static void enterName(){
+    public static String enterName(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name: ");
-        String name = scanner.nextLine();
-        scanner.close();
+        return scanner.nextLine();
     }
 
-    public static void enterEmail(){
+    public static String enterEmail(){
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Name: ");
-        String name = scanner.nextLine();
-        scanner.close();
+        System.out.print("E-mail: ");
+        return scanner.nextLine();
     }
 
-    public static void enterAge(){
+    public static int enterAge(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Age: ");
         int age = scanner.nextInt();
         while(!AgeValidator.ageValidator(age)){
             System.out.print("Please,enter a valid age: ");
         }
-        scanner.close();
+        return age;
     }
 
-    public static void enterHeight(){
+    public static float enterHeight(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Height: ");
-        float height = scanner.nextFloat();
-        scanner.close();
+        return scanner.nextFloat();
     }
 }
