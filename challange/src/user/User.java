@@ -15,22 +15,27 @@ public class User extends Person {
         String email= enterEmail();
         int age = enterAge();
         float height = enterHeight();
+
         User user = new User(name,email,age,height);
+        System.out.println("\n" + user.getName());
+        System.out.println(user.getEmail());
+        System.out.println(user.getAge());
+        System.out.println(user.getHeight());
     }
 
-    public static String enterName(){
+    private static String enterName(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name: ");
         return scanner.nextLine();
     }
 
-    public static String enterEmail(){
+    private static String enterEmail(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("E-mail: ");
         return scanner.nextLine();
     }
 
-    public static int enterAge(){
+    private static int enterAge(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Age: ");
         int age = scanner.nextInt();
@@ -40,9 +45,9 @@ public class User extends Person {
         return age;
     }
 
-    public static float enterHeight(){
+    private static float enterHeight(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Height: ");
+        System.out.print("Height: ");
         return scanner.nextFloat();
     }
 }
