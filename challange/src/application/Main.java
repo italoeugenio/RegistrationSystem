@@ -1,6 +1,6 @@
 package application;
 
-import utils.form.FormReader;
+import form.FormReader;
 
 public class Main {
     public static void main(String[] args) {
