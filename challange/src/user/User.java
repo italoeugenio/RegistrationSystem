@@ -21,6 +21,8 @@ public class User extends Person {
         System.out.println(user.getEmail());
         System.out.println(user.getAge());
         System.out.println(user.getHeight());
+
+        UserManager.addUser(user);
     }
 
     private static String enterName(){
