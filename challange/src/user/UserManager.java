@@ -1,13 +1,16 @@
 package user;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserManager {
-    private static ArrayList<User> users = new ArrayList<>();
+    private static List<User> users = new ArrayList<>();
 
     public static void addUser(User user) {
         users.add(user);
-        System.out.println("User " + user.getName() + " added");
+        System.out.println();
+        System.out.println("--Congratulations---");
+        System.out.println("User: " + user.getName() + " added");
     }
 
 }
