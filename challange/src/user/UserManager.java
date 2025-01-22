@@ -1,5 +1,9 @@
 package user;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,4 +17,7 @@ public class UserManager {
         System.out.println("User: " + user.getName() + " added");
     }
 
+    public static void formWriterUser(User user){
+
+    }
 }
