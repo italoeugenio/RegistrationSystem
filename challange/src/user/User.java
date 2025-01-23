@@ -10,7 +10,7 @@ public class User extends Person {
         super(name, email, age, height);
     }
 
-    public static void userInformations(){
+    public static void RegisterTheUsers(){
         String name = enterName();
         String email= enterEmail();
         int age = enterAge();

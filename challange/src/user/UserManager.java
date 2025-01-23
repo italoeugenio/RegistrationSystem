@@ -3,9 +3,6 @@ package user;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +14,13 @@ public class UserManager {
         System.out.println();
         System.out.println("--Congratulations---");
         System.out.println("User: " + user.getName() + " added");
+        System.out.println("----------------------");
+        System.out.println();
         formWriterUser(user);
     }
 
     public static void formWriterUser(User user){
+        int num = users.size();
         String name = user.getName();
         String[] parts = user.getName().split(" ");
         String concatenated = "";
@@ -31,7 +31,7 @@ public class UserManager {
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
         }
 
-        File file = new File("C:\\Users\\italo.santana\\OneDrive - cnj.jus.br\\Área de Trabalho\\Language\\RegistrationSystem\\challange\\src\\registration\\" + concatenated + ".txt");
+        File file = new File("C:\\Users\\italo.santana\\OneDrive - cnj.jus.br\\Área de Trabalho\\Language\\RegistrationSystem\\challange\\src\\registration\\" + num + "-" + concatenated + ".txt");
         try(FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw)){
             bw.write(user.getName() + "\n");
@@ -42,6 +42,13 @@ public class UserManager {
             bw.flush();
         }catch (Exception e){
             e.printStackTrace();
+        }
+
+    }
+
+    public static void listAllUsers () {
+        for (User user : users) {
+            System.out.println(user.getName());
         }
     }
 }
