@@ -42,7 +42,7 @@ public class User extends Person {
         System.out.print("Age: ");
         int age = scanner.nextInt();
         while(!AgeValidator.ageValidator(age)){
-            System.out.print("Please,enter a valid age: ");
+            System.out.print("Please,enter a valid age (YOU NEED TO BE 18 OR MORE): ");
             age = scanner.nextInt();
         }
         return age;
