@@ -29,6 +29,7 @@ public class UserMenu {
                     break;
                 case 2:
                     UserManager.listAllUsers();
+                    System.out.println();
                     break;
                 case 3:
                     System.out.println("3- Loading...");
@@ -42,7 +43,7 @@ public class UserMenu {
                 case 0:
                     System.out.println("Exiting the program...");
                     scanner.close();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid option, please try again");
             }

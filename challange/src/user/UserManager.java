@@ -25,7 +25,7 @@ public class UserManager {
         String[] parts = user.getName().split(" ");
         String concatenated = "";
 
-        if(parts.length >= 2){
+        if(parts.length > 0){
             String firstName = parts[0];
             String secondName = parts[1];
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
@@ -47,8 +47,15 @@ public class UserManager {
     }
 
     public static void listAllUsers () {
-        for (User user : users) {
-            System.out.println(user.getName());
+        if(users.size() == 0){
+            System.out.println("Empty list");
+        } else {
+            int index = 1;
+            System.out.println("Registered Users");
+            for (User user : users) {
+                System.out.println(index + "-" + user.getName());
+                index += 1;
+            }
         }
     }
 }
