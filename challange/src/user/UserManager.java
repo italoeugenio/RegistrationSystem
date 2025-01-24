@@ -16,10 +16,10 @@ public class UserManager {
         System.out.println("User: " + user.getName() + " added");
         System.out.println("----------------------");
         System.out.println();
-        formWriterUser(user);
+        createFileAboutUser(user);
     }
 
-    public static void formWriterUser(User user){
+    public static void createFileAboutUser(User user){
         int num = users.size();
         String name = user.getName();
         String[] parts = user.getName().split(" ");

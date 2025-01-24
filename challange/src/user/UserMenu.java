@@ -1,6 +1,7 @@
 package user;
 
 import form.FormReader;
+import form.FormWriter;
 
 import java.util.Scanner;
 
@@ -32,10 +33,10 @@ public class UserMenu {
                     System.out.println();
                     break;
                 case 3:
-                    System.out.println("3- Loading...");
+                    FormWriter.addQuestionToForm();
                     break;
                 case 4 :
-                    System.out.println("4- Loading...");
+                    FormWriter.removeQuestionToForm();
                     break;
                 case 5:
                     System.out.println("5- Loading...");
