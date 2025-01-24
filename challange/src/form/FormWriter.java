@@ -21,20 +21,18 @@ public class FormWriter {
         File file = new File("src/resources/forms.txt");
         try (FileWriter fw = new FileWriter(file,true);
              BufferedWriter bw = new BufferedWriter(fw)) {
-            for(String printQuestion: questions){
                 questionsSize += 1;
                 bw.write("\n" + questionsSize + "- " + question);
                 bw.flush();;
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void removeQuestionToForm(){
-        for(String printQuestion: questions){
-            System.out.println("=== QUESTIONS ===");
-            System.out.println(questions);
-        }
+        FormReader.formReader();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number from the question that you´d like to remove: ");
+        int questionRemoved = scanner.nextInt();
     }
 }
