@@ -21,7 +21,6 @@ public class UserManager {
 
     public static void createFileAboutUser(User user){
         int num = users.size();
-        String name = user.getName();
         String[] parts = user.getName().split(" ");
         String concatenated = "";
 
@@ -31,7 +30,7 @@ public class UserManager {
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
         }
 
-        File file = new File("C:\\Users\\italo.santana\\OneDrive - cnj.jus.br\\Área de Trabalho\\Language\\RegistrationSystem\\challange\\src\\registration\\" + num + "-" + concatenated + ".txt");
+        File file = new File("src/registrations" + num + "-" + concatenated + ".txt");
         try(FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw)){
             bw.write(user.getName() + "\n");
