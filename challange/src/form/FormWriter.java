@@ -3,6 +3,7 @@ package form;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,8 +18,8 @@ public class FormWriter {
         System.out.print("Enter the question: ");
         String question = scanner.nextLine();
         questions.add(question);
-
-        File file = new File("src/resources/forms.txt");
+        String path = Paths.get("src", "resources", "forms.txt").toString();
+        File file = new File(path);
         try (FileWriter fw = new FileWriter(file,true);
              BufferedWriter bw = new BufferedWriter(fw)) {
                 questionsSize += 1;
