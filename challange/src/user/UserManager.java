@@ -30,7 +30,7 @@ public class UserManager {
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
         }
 
-        File file = new File("src/registrations" + num + "-" + concatenated + ".txt");
+        File file = new File("src/registrations" + num + "-" + concatenated + ".txt"); //
         try(FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw)){
             bw.write(user.getName() + "\n");
