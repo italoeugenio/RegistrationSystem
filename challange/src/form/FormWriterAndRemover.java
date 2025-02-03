@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class FormWriter {
     private static List<String> questions = new ArrayList<>();
 
-    public static void addQuestionToForm() {
+    public static void addNewQuestionToForm() {
         int questionsSize = questions.size() + 4;
 
         Scanner scanner = new Scanner(System.in);
@@ -28,12 +28,5 @@ public class FormWriter {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void removeQuestionToForm(){
-        FormReader.formReader();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number from the question that you´d like to remove: ");
-        int questionRemoved = scanner.nextInt();
     }
 }
