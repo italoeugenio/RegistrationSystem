@@ -3,6 +3,7 @@ package user;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,8 @@ public class UserManager {
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
         }
 
-        String path = Paths.get("src", "registration", num + "-" + concatenated + ".txt").toString();
-        File file = new File(path);
+        Path path = Path.of("src", "registration", num + "-" + concatenated + ".txt");
+        File file = path.toFile();
         try(FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw)){
             bw.write(user.getName() + "\n");

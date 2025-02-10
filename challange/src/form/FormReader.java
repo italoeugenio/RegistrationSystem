@@ -3,12 +3,13 @@ package form;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FormReader {
     public static void formReader() {
-        String path = Paths.get("src", "resources", "forms.txt").toString();
-        File file = new File(path);
+        Path path = Path.of("src", "resources", "forms.txt");
+        File file = path.toFile();
         try (FileReader fr = new FileReader(file);
              BufferedReader br = new BufferedReader(fr)) {
             String line;
