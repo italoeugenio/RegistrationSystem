@@ -29,7 +29,7 @@ public class UserManager {
 
         if(parts.length > 0){
             String firstName = parts[0];
-            String secondName = parts[1];
+            String secondName = (parts.length > 1) ? parts[1] : "";
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
         }
 
@@ -51,7 +51,7 @@ public class UserManager {
     }
 
     public static void listAllUsers () {
-        if(users.size() == 0){
+        if(users.isEmpty()){
             System.out.println("Empty list");
         } else {
             int index = 1;
