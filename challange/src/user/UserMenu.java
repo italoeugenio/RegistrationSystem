@@ -3,10 +3,11 @@ package user;
 import form.FormReader;
 import form.FormWriterAndRemover;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UserMenu {
-    public static void userMenuOptions(){
+    public static void userMenuOptions() throws IOException {
         Scanner scanner = new Scanner(System.in);
 
         FormReader.formReader();

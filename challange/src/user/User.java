@@ -3,6 +3,7 @@ package user;
 import model.Person;
 import utils.AgeValidator;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class User extends Person {
@@ -10,7 +11,7 @@ public class User extends Person {
         super(name, email, age, height);
     }
 
-    public static void RegisterTheUsers(){
+    public static void RegisterTheUsers() throws IOException {
         String name = enterName();
         String email= enterEmail();
         int age = enterAge();

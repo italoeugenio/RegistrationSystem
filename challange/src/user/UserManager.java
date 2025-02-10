@@ -3,15 +3,16 @@ package user;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager {
     private static List<User> users = new ArrayList<>();
 
-    public static void addUser(User user) {
+    public static void addUser(User user) throws IOException {
         users.add(user);
         System.out.println();
         System.out.println("--Congratulations---");
@@ -21,7 +22,7 @@ public class UserManager {
         createFileAboutUser(user);
     }
 
-    public static void createFileAboutUser(User user){
+    public static void createFileAboutUser(User user) throws IOException {
         int num = users.size();
         String[] parts = user.getName().split(" ");
         String concatenated = "";
@@ -33,6 +34,7 @@ public class UserManager {
         }
 
         Path path = Path.of("src", "registration", num + "-" + concatenated + ".txt");
+        Files.createDirectories(path.getParent());
         File file = path.toFile();
         try(FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw)){
