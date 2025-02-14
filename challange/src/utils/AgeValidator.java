@@ -1,10 +1,9 @@
 package utils;
 
 public class AgeValidator {
-    public static boolean ageValidator(int age){
+    public static void ageValidator(int age) throws IllegalArgumentException{
         if(age >= 18){
-            return true;
+            throw new IllegalArgumentException("Please, THE LENGTH NEEDS TO BE 10 OR MORE");
         }
-        return false;
     }
 }
