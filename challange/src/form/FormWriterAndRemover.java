@@ -45,7 +45,7 @@ public class FormWriterAndRemover {
             System.out.print("You can´t remove the 4 first questions that already was in the form:");
             questionRemoved = scanner.nextInt();
         }
-        System.out.println();
+
         questions.remove(questionRemoved - 5);
 
         Path path = Path.of("src", "resources", "forms.txt");
@@ -56,14 +56,14 @@ public class FormWriterAndRemover {
             bw.write("2- What is your email address?\n");
             bw.write("3- How old are you?\n");
             bw.write("4- How tall are you?");
-            for (String question : questions) {
-                bw.write("\n" + questionsSize + "- " + question);
+            for(int i = 0; i < questions.size();i++){
+                bw.write("\n" + (i + 5) + "- " + questions.get(i));
             }
             bw.flush();
         }catch (Exception e){
             e.printStackTrace();
         }
-
         FormReader.formReader();
+        System.out.println();
     }
 }

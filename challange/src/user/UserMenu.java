@@ -40,7 +40,7 @@ public class UserMenu {
                     FormWriterAndRemover.removeQuestionToForm();
                     break;
                 case 5:
-                    System.out.println("5- Loading...");
+                    UserManager.findUsers();
                     break;
                 case 0:
                     System.out.println("Exiting the program...");

@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UserManager {
     private static List<User> users = new ArrayList<>();
@@ -55,11 +56,23 @@ public class UserManager {
             System.out.println("Empty list");
         } else {
             int index = 1;
-            System.out.println("Registered Users");
+            System.out.println("---Registered Users---");
             for (User user : users) {
                 System.out.println(index + "-" + user.getName());
                 index += 1;
             }
         }
     }
+
+    public static void findUsers(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the name from users that you'd like to search: ");
+        String userSearchFilter = scanner.nextLine().toLowerCase();
+
+        List<User> filterFromUsers = users.stream()
+                .filter(user -> user.getName().toLowerCase().startsWith(userSearchFilter))
+                .toList();
+        filterFromUsers.forEach(System.out::println);
+    }
+
 }

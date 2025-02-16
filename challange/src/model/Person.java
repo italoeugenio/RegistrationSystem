@@ -44,4 +44,14 @@ public class Person {
     public void setHeight(float height) {
         this.height = height;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                '}';
+    }
 }
