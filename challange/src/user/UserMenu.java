@@ -3,11 +3,12 @@ package user;
 import form.FormReader;
 import form.FormWriterAndRemover;
 
+import javax.naming.InvalidNameException;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class UserMenu {
-    public static void userMenuOptions() throws IOException {
+    public static void userMenuOptions() throws IOException, InvalidNameException {
         Scanner scanner = new Scanner(System.in);
 
         FormReader.formReader();

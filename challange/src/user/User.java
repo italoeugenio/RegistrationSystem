@@ -2,7 +2,9 @@ package user;
 
 import model.Person;
 import utils.AgeValidator;
+import utils.NameValidator;
 
+import javax.naming.InvalidNameException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class User extends Person {
         super(name, email, age, height);
     }
 
-    public static void RegisterTheUsers() throws IOException {
+    public static void RegisterTheUsers() throws IOException, InvalidNameException {
         String name = enterName();
         String email= enterEmail();
         int age = enterAge();
@@ -26,10 +28,12 @@ public class User extends Person {
         UserManager.addUser(user);
     }
 
-    private static String enterName(){
+    private static String enterName() throws InvalidNameException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name: ");
-        return scanner.nextLine();
+        String name = scanner.nextLine();
+        NameValidator.nameValidator(name);
+        return name;
     }
 
     private static String enterEmail(){
@@ -42,10 +46,7 @@ public class User extends Person {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Age: ");
         int age = scanner.nextInt();
-        while(!AgeValidator.ageValidator(age)){
-            System.out.print("Please,enter a valid age (YOU NEED TO BE 18 OR MORE): ");
-            age = scanner.nextInt();
-        }
+        AgeValidator.ageValidator(age);
         return age;
     }
 
