@@ -32,7 +32,6 @@ public class UserMenu {
                     break;
                 case 2:
                     UserManager.listAllUsers();
-                    System.out.println();
                     break;
                 case 3:
                     FormWriterAndRemover.addNewQuestionToForm();

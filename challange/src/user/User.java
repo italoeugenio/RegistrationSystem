@@ -2,6 +2,7 @@ package user;
 
 import model.Person;
 import utils.AgeValidator;
+import utils.EmailValidator;
 import utils.NameValidator;
 
 import javax.naming.InvalidNameException;
@@ -32,14 +33,20 @@ public class User extends Person {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name: ");
         String name = scanner.nextLine();
-        NameValidator.nameValidator(name);
+        while (NameValidator.nameValidator(name)){
+            System.out.print("Enter your name again: ");
+            name = scanner.nextLine();
+        }
         return name;
     }
 
     private static String enterEmail(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("E-mail: ");
-        return scanner.nextLine();
+        String email = scanner.nextLine();
+        EmailValidator.emailValidator(email);
+        EmailValidator.validateUserExistByEmail(email);
+        return email;
     }
 
     private static int enterAge(){

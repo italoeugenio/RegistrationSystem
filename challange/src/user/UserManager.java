@@ -61,6 +61,7 @@ public class UserManager {
                 System.out.println(index + "-" + user.getName());
                 index += 1;
             }
+            System.out.println();
         }
     }
 

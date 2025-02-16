@@ -3,10 +3,18 @@ package utils;
 import javax.naming.InvalidNameException;
 
 public class NameValidator {
-    public static void nameValidator(String name) throws InvalidNameException {
-        String[] nameSplit = name.split(" ");
-        if((name.length() - nameSplit.length + 1 >= 10)){
-            throw new InvalidNameException("Please,THE LENGTH OF CHARACTERS NEEDS TO BE 10 OR MORE");
+    public static boolean nameValidator(String name){
+        try{
+            String[] nameSplit = name.split(" ");
+            if((name.length() - nameSplit.length + 1 <= 10)){
+                throw new InvalidNameException("Please,THE LENGTH OF CHARACTERS NEEDS TO BE 10 OR MORE");
+            }
+            return true;
+
+        }catch (InvalidNameException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
+        return false;
     }
 }
