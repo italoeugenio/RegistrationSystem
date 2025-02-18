@@ -48,6 +48,16 @@ public class User extends Person {
         String email = scanner.nextLine();
         EmailValidator.emailValidator(email);
         EmailValidator.validateUserExistByEmail(email);
+        while(EmailValidator.emailValidator(email) || EmailValidator.validateUserExistByEmail(email) ){
+            if(EmailValidator.emailValidator(email)){
+                System.out.println("--INVALID E-MAIL--");
+            }
+            if(EmailValidator.validateUserExistByEmail(email)){
+                System.out.println("--USER ALREADY REGISTERED--");
+            }
+            System.out.println("Enter your e-mail again: ");
+            email = scanner.nextLine();
+        }
         return email;
     }
 
