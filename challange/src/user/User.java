@@ -33,8 +33,10 @@ public class User extends Person {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name: ");
         String name = scanner.nextLine();
-        while (NameValidator.nameValidator(name)){
-            System.out.print("Enter your name again: ");
+        NameValidator.nameValidator(name);
+        String[] nameSplit = name.split(" ");
+        while((name.length() - nameSplit.length + 1 <= 10)){
+            System.out.print("Enter your name again (must be at least 10 characters long): ");
             name = scanner.nextLine();
         }
         return name;
@@ -54,6 +56,10 @@ public class User extends Person {
         System.out.print("Age: ");
         int age = scanner.nextInt();
         AgeValidator.ageValidator(age);
+        while(age <= 18){
+            System.out.print("Enter your age again (must be at least 18 years old): ");
+            age = scanner.nextInt();
+        }
         return age;
     }
 

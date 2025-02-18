@@ -30,6 +30,5 @@ public class EmailValidator extends UserManager{
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-
     }
 }
