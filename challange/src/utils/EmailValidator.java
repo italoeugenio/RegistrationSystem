@@ -27,8 +27,8 @@ public class EmailValidator extends UserManager{
                 if(user.getEmail().equals(email)){
                     throw new IllegalArgumentException("USER ALREADY REGISTERED");
                 }
-                return true;
             }
+            return true;
         }catch (IllegalArgumentException e){
             e.printStackTrace();
             System.out.println(e.getMessage());

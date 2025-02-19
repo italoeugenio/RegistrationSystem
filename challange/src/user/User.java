@@ -16,11 +16,11 @@ public class User extends Person {
 
     public static void RegisterTheUsers() throws IOException, InvalidNameException {
         String name = enterName();
-        String email= enterEmail();
+        String email = enterEmail();
         int age = enterAge();
         float height = enterHeight();
 
-        User user = new User(name,email,age,height);
+        User user = new User(name, email, age, height);
         System.out.println("\n" + user.getName());
         System.out.println(user.getEmail());
         System.out.println(user.getAge());
@@ -35,7 +35,7 @@ public class User extends Person {
         String name = scanner.nextLine();
         NameValidator.nameValidator(name);
         String[] nameSplit = name.split(" ");
-        while((name.length() - nameSplit.length + 1 <= 10)){
+        while ((name.length() - nameSplit.length + 1 <= 10)) {
             System.out.print("Enter your name again (must be at least 10 characters long): ");
             name = scanner.nextLine();
         }
@@ -46,34 +46,30 @@ public class User extends Person {
         Scanner scanner = new Scanner(System.in);
         System.out.print("E-mail: ");
         String email = scanner.nextLine();
-        EmailValidator.emailValidator(email);
-        EmailValidator.validateUserExistByEmail(email);
-        while(EmailValidator.emailValidator(email) || EmailValidator.validateUserExistByEmail(email) ){
-            if(EmailValidator.emailValidator(email)){
-                System.out.println("--INVALID E-MAIL--");
-            }
-            if(EmailValidator.validateUserExistByEmail(email)){
-                System.out.println("--USER ALREADY REGISTERED--");
-            }
-            System.out.println("Enter your e-mail again: ");
+        boolean isemailValidator = EmailValidator.emailValidator(email);
+        boolean isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
+        while((!isemailValidator || !isvalidateUserExistByEmail)){
+            System.out.print("Enter your e-mail again: ");
             email = scanner.nextLine();
+            isemailValidator = EmailValidator.emailValidator(email);
+            isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
         }
         return email;
     }
 
-    private static int enterAge(){
+    private static int enterAge() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Age: ");
         int age = scanner.nextInt();
         AgeValidator.ageValidator(age);
-        while(age <= 18){
+        while (age <= 18) {
             System.out.print("Enter your age again (must be at least 18 years old): ");
             age = scanner.nextInt();
         }
         return age;
     }
 
-    private static float enterHeight(){
+    private static float enterHeight() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Height: ");
         return scanner.nextFloat();
