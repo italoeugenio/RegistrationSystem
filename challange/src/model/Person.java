@@ -6,7 +6,7 @@ public class Person {
     private int age;
     private String height;
 
-    public Person(String name, String email, int age, String height){
+    public Person(String name, String email, int age, String height) {
         this.name = name;
         this.email = email;
         this.age = age;
@@ -21,15 +21,15 @@ public class Person {
         this.name = name;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getAge(){
+    public int getAge() {
         return age;
     }
 
@@ -37,7 +37,7 @@ public class Person {
         this.age = age;
     }
 
-    public String getHeight(){
+    public String getHeight() {
         return height;
     }
 

@@ -14,7 +14,7 @@ public class UserMenu {
         FormReader.formReader();
         System.out.println();
 
-        while(true){
+        while (true) {
             System.out.println("===== MENU =====");
             System.out.println("1- Register the Users");
             System.out.println("2- List All User");
@@ -26,7 +26,7 @@ public class UserMenu {
 
             int option = scanner.nextInt();
 
-            switch (option){
+            switch (option) {
                 case 1:
                     User.RegisterTheUsers();
                     break;
@@ -36,7 +36,7 @@ public class UserMenu {
                 case 3:
                     FormWriterAndRemover.addNewQuestionToForm();
                     break;
-                case 4 :
+                case 4:
                     FormWriterAndRemover.removeQuestionToForm();
                     break;
                 case 5:

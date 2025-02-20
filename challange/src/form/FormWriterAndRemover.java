@@ -20,11 +20,12 @@ public class FormWriterAndRemover {
         questions.add(question);
         Path path = Path.of("src", "resources", "forms.txt");
         File file = path.toFile();
-        try (FileWriter fw = new FileWriter(file,true);
+        try (FileWriter fw = new FileWriter(file, true);
              BufferedWriter bw = new BufferedWriter(fw)) {
-                questionsSize += 1;
-                bw.write("\n" + questionsSize + "- " + question);
-                bw.flush();;
+            questionsSize += 1;
+            bw.write("\n" + questionsSize + "- " + question);
+            bw.flush();
+            ;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +34,7 @@ public class FormWriterAndRemover {
         System.out.println();
     }
 
-    public static void removeQuestionToForm(){
+    public static void removeQuestionToForm() {
         System.out.println();
         FormReader.formReader();
 
@@ -41,7 +42,7 @@ public class FormWriterAndRemover {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number from the question that you´d like to remove: ");
         int questionRemoved = scanner.nextInt();
-        while(questionRemoved <= 4){
+        while (questionRemoved <= 4) {
             System.out.print("You can´t remove the 4 first questions that already was in the form:");
             questionRemoved = scanner.nextInt();
         }
@@ -50,17 +51,17 @@ public class FormWriterAndRemover {
 
         Path path = Path.of("src", "resources", "forms.txt");
         File file = path.toFile();
-        try(FileWriter fw = new FileWriter(file);
-        BufferedWriter bw = new BufferedWriter(fw)){
+        try (FileWriter fw = new FileWriter(file);
+             BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write("1- What is your full name?\n");
             bw.write("2- What is your email address?\n");
             bw.write("3- How old are you?\n");
             bw.write("4- How tall are you?");
-            for(int i = 0; i < questions.size();i++){
+            for (int i = 0; i < questions.size(); i++) {
                 bw.write("\n" + (i + 5) + "- " + questions.get(i));
             }
             bw.flush();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         FormReader.formReader();

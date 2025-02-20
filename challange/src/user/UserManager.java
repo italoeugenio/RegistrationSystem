@@ -1,5 +1,7 @@
 package user;
 
+import form.FormReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -28,7 +30,7 @@ public class UserManager {
         String[] parts = user.getName().split(" ");
         String concatenated = "";
 
-        if(parts.length > 0){
+        if (parts.length > 0) {
             String firstName = parts[0];
             String secondName = (parts.length > 1) ? parts[1] : "";
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
@@ -37,22 +39,23 @@ public class UserManager {
         Path path = Path.of("src", "registration", num + "-" + concatenated + ".txt");
         Files.createDirectories(path.getParent());
         File file = path.toFile();
-        try(FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw)){
+        try (FileWriter fw = new FileWriter(file);
+             BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(user.getName() + "\n");
             bw.write(user.getEmail() + "\n");
             bw.write(user.getAge() + "\n");
             String height = String.valueOf(user.getHeight());
             bw.write(height);
             bw.flush();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    public static void listAllUsers () {
-        if(users.isEmpty()){
+    public static void listAllUsers() {
+        System.out.println();
+        if (users.isEmpty()) {
             System.out.println("Empty list");
         } else {
             int index = 1;
@@ -62,18 +65,72 @@ public class UserManager {
                 index += 1;
             }
             System.out.println();
+            FormReader.formReader();
+            System.out.println();
         }
     }
 
-    public static void findUsers(){
+    public static void findUsers() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the name from users that you'd like to search: ");
-        String userSearchFilter = scanner.nextLine().toLowerCase();
 
-        List<User> filterFromUsers = users.stream()
-                .filter(user -> user.getName().toLowerCase().startsWith(userSearchFilter))
-                .toList();
-        filterFromUsers.forEach(System.out::println);
+        System.out.println("1- Search by name");
+        System.out.println("2- Search by age");
+        System.out.println("3- Search by e-mail");
+        System.out.print("Enter the a option:");
+        int option = scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                System.out.print("Enter the name from users that you'd like to search: ");
+                String userSearchFilterByName = scanner.nextLine().toLowerCase();
+                List<User> filterFromUsersByName = users.stream()
+                        .filter(user -> user.getName().toLowerCase().startsWith(userSearchFilterByName))
+                        .toList();
+                System.out.println();
+                if (users.isEmpty()) {
+                    System.out.println("Empty list");
+                }
+                System.out.println("--Search by name---");
+                filterFromUsersByName.forEach(System.out::println);
+                System.out.println();
+                break;
+
+            case 2:
+                System.out.print("Enter the age from users that you'd like to search: ");
+                int userSearchFilterByAge = scanner.nextInt();
+                scanner.nextLine();
+                List<User> filterFromUsersByAge = users.stream()
+                        .filter(user -> user.getAge() == userSearchFilterByAge)
+                        .toList();
+                System.out.println();
+                if (filterFromUsersByAge.isEmpty()) {
+                    System.out.println("Empty list");
+                }
+                System.out.println("--Search by Age---");
+                filterFromUsersByAge.forEach(System.out::println);
+                System.out.println();
+                break;
+
+            case 3:
+                System.out.print("Enter the e-mail from users that you'd like to search: ");
+                String userSearchFilterByEmail = scanner.nextLine().toLowerCase();
+                List<User> filterFromUsersByEmail = users.stream()
+                        .filter(user -> user.getEmail().toLowerCase().startsWith(userSearchFilterByEmail))
+                        .toList();
+                System.out.println();
+                if (filterFromUsersByEmail.isEmpty()) {
+                    System.out.println("Empty list");
+                }
+                System.out.println("--Search by E-mail---");
+                filterFromUsersByEmail.forEach(System.out::println);
+                System.out.println();
+                break;
+
+            default:
+                System.out.println("Invalid option");
+        }
+        System.out.println();
+        FormReader.formReader();
+        System.out.println();
     }
-
 }

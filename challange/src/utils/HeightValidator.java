@@ -13,9 +13,4 @@ public class HeightValidator {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        String height = "1,76";
-        HeightValidator.heightValidator(height);
-    }
 }

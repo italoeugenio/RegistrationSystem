@@ -1,5 +1,6 @@
 package user;
 
+import form.FormReader;
 import model.Person;
 import utils.AgeValidator;
 import utils.EmailValidator;
@@ -28,6 +29,10 @@ public class User extends Person {
         System.out.println(user.getHeight());
 
         UserManager.addUser(user);
+
+        System.out.println();
+        FormReader.formReader();
+        System.out.println();
     }
 
     private static String enterName() throws InvalidNameException {
@@ -43,13 +48,13 @@ public class User extends Person {
         return name;
     }
 
-    private static String enterEmail(){
+    private static String enterEmail() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("E-mail: ");
         String email = scanner.nextLine();
         boolean isemailValidator = EmailValidator.emailValidator(email);
         boolean isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
-        while((!isemailValidator || !isvalidateUserExistByEmail)){
+        while ((!isemailValidator || !isvalidateUserExistByEmail)) {
             System.out.print("Enter your e-mail again: ");
             email = scanner.nextLine();
             isemailValidator = EmailValidator.emailValidator(email);
@@ -64,7 +69,7 @@ public class User extends Person {
         int age = scanner.nextInt();
         AgeValidator.ageValidator(age);
         while (age <= 18) {
-            System.out.print("Enter your age again (must be at least 18 years old): ");
+            System.out.print("Enter your age again (must be older than 18 years old): ");
             age = scanner.nextInt();
         }
         return age;
@@ -76,7 +81,7 @@ public class User extends Person {
         String stringHeight = scanner.nextLine();
         boolean isheightValidator = HeightValidator.heightValidator(stringHeight);
         System.out.println(isheightValidator);
-        while(!isheightValidator){
+        while (!isheightValidator) {
             System.out.print("Enter a valid height with (,):");
             stringHeight = scanner.nextLine();
             isheightValidator = HeightValidator.heightValidator(stringHeight);
