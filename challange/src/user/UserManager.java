@@ -133,16 +133,16 @@ public class UserManager extends User {
         System.out.println();
     }
 
-    public static void createFilesAboutUserWhenChangeInformations() throws IOException {
-        for(int i = 0; i < users.size(); i++){
-            createFileAboutUser(users.get(i));
+    public static void rewriteAllFiles() throws IOException {
+        for (User user : users) {
+            createFileAboutUser(user);
         }
     }
 
     public static void changeInformationAboutUser() throws IOException, InvalidNameException {
         Scanner scanner = new Scanner(System.in);
         listAllUsers();
-        System.out.print("Enter the user that you´d like to change");
+        System.out.print("Enter the user that you´d like to change: ");
         int selectUser = scanner.nextInt();
         scanner.nextLine();
         System.out.println(users.get(selectUser - 1));
@@ -152,8 +152,8 @@ public class UserManager extends User {
         String heightAgain = enterHeight();
 
         User updatedUser = new User(name, emailAgain, ageAgain, heightAgain);
-        users.set(selectUser, updatedUser);
+        users.set(selectUser - 1, updatedUser);
 
-        createFilesAboutUserWhenChangeInformations();
+        rewriteAllFiles();
     }
 }

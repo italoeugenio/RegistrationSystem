@@ -39,11 +39,11 @@ public class User extends Person {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name: ");
         String name = scanner.nextLine();
-        NameValidator.nameValidator(name);
-        String[] nameSplit = name.split(" ");
-        while ((name.length() - nameSplit.length + 1 <= 10)) {
+        boolean isNameValidator = NameValidator.nameValidator(name);
+        while (!isNameValidator) {
             System.out.print("Enter your name again (must be at least 10 characters long): ");
             name = scanner.nextLine();
+            isNameValidator = NameValidator.nameValidator(name);
         }
         return name;
     }
@@ -80,7 +80,6 @@ public class User extends Person {
         System.out.print("Height: ");
         String stringHeight = scanner.nextLine();
         boolean isheightValidator = HeightValidator.heightValidator(stringHeight);
-        System.out.println(isheightValidator);
         while (!isheightValidator) {
             System.out.print("Enter a valid height with (,):");
             stringHeight = scanner.nextLine();

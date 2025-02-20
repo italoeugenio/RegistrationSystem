@@ -5,6 +5,11 @@ import user.UserManager;
 
 
 public class EmailValidator extends UserManager {
+
+    public EmailValidator(String name, String email, int age, String height) {
+        super(name, email, age, height);
+    }
+
     public static boolean emailValidator(String email) {
         try {
             String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
