@@ -3,6 +3,7 @@ package user;
 import model.Person;
 import utils.AgeValidator;
 import utils.EmailValidator;
+import utils.HeightValidator;
 import utils.NameValidator;
 
 import javax.naming.InvalidNameException;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class User extends Person {
-    public User(String name, String email, int age, float height) {
+    public User(String name, String email, int age, String height) {
         super(name, email, age, height);
     }
 
@@ -18,7 +19,7 @@ public class User extends Person {
         String name = enterName();
         String email = enterEmail();
         int age = enterAge();
-        float height = enterHeight();
+        String height = enterHeight();
 
         User user = new User(name, email, age, height);
         System.out.println("\n" + user.getName());
@@ -69,9 +70,17 @@ public class User extends Person {
         return age;
     }
 
-    private static float enterHeight() {
+    private static String enterHeight() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Height: ");
-        return scanner.nextFloat();
+        String stringHeight = scanner.nextLine();
+        boolean isheightValidator = HeightValidator.heightValidator(stringHeight);
+        System.out.println(isheightValidator);
+        while(!isheightValidator){
+            System.out.print("Enter a valid height with (,):");
+            stringHeight = scanner.nextLine();
+            isheightValidator = HeightValidator.heightValidator(stringHeight);
+        }
+        return stringHeight;
     }
 }

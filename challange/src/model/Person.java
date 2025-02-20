@@ -4,9 +4,9 @@ public class Person {
     private String name;
     private String email;
     private int age;
-    private float height;
+    private String height;
 
-    public Person(String name, String email, int age, float height){
+    public Person(String name, String email, int age, String height){
         this.name = name;
         this.email = email;
         this.age = age;
@@ -37,11 +37,11 @@ public class Person {
         this.age = age;
     }
 
-    public float getHeight(){
+    public String getHeight(){
         return height;
     }
 
-    public void setHeight(float height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
