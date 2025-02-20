@@ -21,6 +21,7 @@ public class UserMenu {
             System.out.println("3- Add a new question to the form");
             System.out.println("4- Delete a questions from the form");
             System.out.println("5- Search for a user by name, age, or email");
+            System.out.println("6- Change information about user");
             System.out.println("0- Exit");
             System.out.print("Please, enter a option:");
 
@@ -41,6 +42,9 @@ public class UserMenu {
                     break;
                 case 5:
                     UserManager.findUsers();
+                    break;
+                case 6:
+                    UserManager.changeInformationAboutUser();
                     break;
                 case 0:
                     System.out.println("Exiting the program...");

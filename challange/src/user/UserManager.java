@@ -1,7 +1,6 @@
 package user;
 
-import form.FormReader;
-
+import javax.naming.InvalidNameException;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,14 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserManager {
+public class UserManager extends User {
     protected static List<User> users = new ArrayList<>();
+
+    public UserManager(String name, String email, int age, String height) {
+        super(name, email, age, height);
+    }
 
     public static void addUser(User user) throws IOException {
         users.add(user);
         System.out.println();
         System.out.println("--Congratulations---");
-        System.out.println("User: " + user.getName() + " added");
+        System.out.println("User: " + user.getName().toUpperCase() + " added");
         System.out.println("----------------------");
         System.out.println();
         createFileAboutUser(user);
@@ -61,11 +64,9 @@ public class UserManager {
             int index = 1;
             System.out.println("---Registered Users---");
             for (User user : users) {
-                System.out.println(index + "-" + user.getName());
+                System.out.println(index + "-" + user.getName().toUpperCase());
                 index += 1;
             }
-            System.out.println();
-            FormReader.formReader();
             System.out.println();
         }
     }
@@ -88,7 +89,7 @@ public class UserManager {
                         .toList();
                 System.out.println();
                 if (users.isEmpty()) {
-                    System.out.println("Empty list");
+                    System.out.println("Didn't find any user with this information.");
                 }
                 System.out.println("--Search by name---");
                 filterFromUsersByName.forEach(System.out::println);
@@ -104,7 +105,7 @@ public class UserManager {
                         .toList();
                 System.out.println();
                 if (filterFromUsersByAge.isEmpty()) {
-                    System.out.println("Empty list");
+                    System.out.println("Didn't find any user with this information.");
                 }
                 System.out.println("--Search by Age---");
                 filterFromUsersByAge.forEach(System.out::println);
@@ -119,7 +120,7 @@ public class UserManager {
                         .toList();
                 System.out.println();
                 if (filterFromUsersByEmail.isEmpty()) {
-                    System.out.println("Empty list");
+                    System.out.println("Didn't find any user with this information.");
                 }
                 System.out.println("--Search by E-mail---");
                 filterFromUsersByEmail.forEach(System.out::println);
@@ -130,7 +131,29 @@ public class UserManager {
                 System.out.println("Invalid option");
         }
         System.out.println();
-        FormReader.formReader();
-        System.out.println();
+    }
+
+    public static void createFilesAboutUserWhenChangeInformations() throws IOException {
+        for(int i = 0; i < users.size(); i++){
+            createFileAboutUser(users.get(i));
+        }
+    }
+
+    public static void changeInformationAboutUser() throws IOException, InvalidNameException {
+        Scanner scanner = new Scanner(System.in);
+        listAllUsers();
+        System.out.print("Enter the user that you´d like to change");
+        int selectUser = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println(users.get(selectUser - 1));
+        String name = enterName();
+        String emailAgain = enterEmail();
+        int ageAgain = enterAge();
+        String heightAgain = enterHeight();
+
+        User updatedUser = new User(name, emailAgain, ageAgain, heightAgain);
+        users.set(selectUser, updatedUser);
+
+        createFilesAboutUserWhenChangeInformations();
     }
 }

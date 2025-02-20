@@ -16,7 +16,7 @@ public class User extends Person {
         super(name, email, age, height);
     }
 
-    public static void RegisterTheUsers() throws IOException, InvalidNameException {
+    protected static void RegisterTheUsers() throws IOException, InvalidNameException {
         String name = enterName();
         String email = enterEmail();
         int age = enterAge();
@@ -35,7 +35,7 @@ public class User extends Person {
         System.out.println();
     }
 
-    private static String enterName() throws InvalidNameException {
+    protected static String enterName() throws InvalidNameException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Name: ");
         String name = scanner.nextLine();
@@ -48,7 +48,7 @@ public class User extends Person {
         return name;
     }
 
-    private static String enterEmail() {
+    protected static String enterEmail() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("E-mail: ");
         String email = scanner.nextLine();
@@ -63,7 +63,7 @@ public class User extends Person {
         return email;
     }
 
-    private static int enterAge() {
+    protected static int enterAge() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Age: ");
         int age = scanner.nextInt();
@@ -75,7 +75,7 @@ public class User extends Person {
         return age;
     }
 
-    private static String enterHeight() {
+    protected static String enterHeight() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Height: ");
         String stringHeight = scanner.nextLine();
