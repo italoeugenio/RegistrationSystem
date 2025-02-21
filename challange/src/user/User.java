@@ -16,9 +16,14 @@ public class User extends Person {
         super(name, email, age, height);
     }
 
+    public User() {
+        super();
+    }
+
     protected static void RegisterTheUsers() throws IOException, InvalidNameException {
+        User userInstance = new User();
         String name = enterName();
-        String email = enterEmail();
+        String email = userInstance.enterEmail();
         int age = enterAge();
         String height = enterHeight();
 
@@ -48,7 +53,7 @@ public class User extends Person {
         return name;
     }
 
-    protected static String enterEmail() {
+    protected String enterEmail() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("E-mail: ");
         String email = scanner.nextLine();

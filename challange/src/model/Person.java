@@ -13,6 +13,10 @@ public class Person {
         this.height = height;
     }
 
+    public Person() {
+
+    }
+
     public String getName() {
         return name;
     }

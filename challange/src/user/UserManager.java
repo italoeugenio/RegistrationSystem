@@ -1,5 +1,7 @@
 package user;
 
+import utils.EmailValidator;
+
 import javax.naming.InvalidNameException;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +18,10 @@ public class UserManager extends User {
 
     public UserManager(String name, String email, int age, String height) {
         super(name, email, age, height);
+    }
+
+    public UserManager() {
+
     }
 
     public static void addUser(User user) throws IOException {
@@ -133,6 +139,22 @@ public class UserManager extends User {
         System.out.println();
     }
 
+    @Override
+    protected String enterEmail() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("E-mail: ");
+        String email = scanner.nextLine();
+        boolean isemailValidator = EmailValidator.emailValidator(email);
+        boolean isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
+        while ((!isemailValidator || !isvalidateUserExistByEmail)) {
+            System.out.print("Enter your e-mail again: ");
+            email = scanner.nextLine();
+            isemailValidator = EmailValidator.emailValidator(email);
+            isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
+        }
+        return email;
+    }
+
     public static void rewriteAllFiles() throws IOException {
         for (User user : users) {
             createFileAboutUser(user);
@@ -141,13 +163,14 @@ public class UserManager extends User {
 
     public static void changeInformationAboutUser() throws IOException, InvalidNameException {
         Scanner scanner = new Scanner(System.in);
+        UserManager userInstance = new UserManager();
         listAllUsers();
         System.out.print("Enter the user that you´d like to change: ");
         int selectUser = scanner.nextInt();
         scanner.nextLine();
         System.out.println(users.get(selectUser - 1));
         String name = enterName();
-        String emailAgain = enterEmail();
+        String emailAgain = userInstance.enterEmail();
         int ageAgain = enterAge();
         String heightAgain = enterHeight();
 
