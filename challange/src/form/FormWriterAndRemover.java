@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FormWriterAndRemover {
-    private static List<String> questions = new ArrayList<>();
+    private static final List<String> questions = new ArrayList<>();
 
     public static void addNewQuestionToForm() {
         int questionsSize = questions.size() + 4;
