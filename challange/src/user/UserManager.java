@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -139,18 +140,24 @@ public class UserManager extends User {
         System.out.println();
     }
 
-    @Override
-    protected String enterEmail() {
+    protected String enterEmailToChange(String currentEmail) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("E-mail: ");
         String email = scanner.nextLine();
         boolean isemailValidator = EmailValidator.emailValidator(email);
         boolean isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
+        if (email.equals(currentEmail)) {
+            System.out.println("If you enter your current e-mail, You can disregard the message that the user already exists");
+            isvalidateUserExistByEmail = true;
+        }
         while ((!isemailValidator || !isvalidateUserExistByEmail)) {
-            System.out.print("Enter your e-mail again: ");
-            email = scanner.nextLine();
+            System.out.print("Enter your e-mail again:");
             isemailValidator = EmailValidator.emailValidator(email);
             isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
+
+            if (email.equals(currentEmail)) {
+                isvalidateUserExistByEmail = true;
+            }
         }
         return email;
     }
@@ -168,15 +175,21 @@ public class UserManager extends User {
         System.out.print("Enter the user that you´d like to change: ");
         int selectUser = scanner.nextInt();
         scanner.nextLine();
-        System.out.println(users.get(selectUser - 1));
+        User userToUpdate = users.get(selectUser - 1);
+        System.out.println(userToUpdate);
+
         String name = enterName();
-        String emailAgain = userInstance.enterEmail();
+        String emailAgain = userInstance.enterEmailToChange(userToUpdate.getEmail());
+
         int ageAgain = enterAge();
         String heightAgain = enterHeight();
 
         User updatedUser = new User(name, emailAgain, ageAgain, heightAgain);
         users.set(selectUser - 1, updatedUser);
 
+        System.out.println("UPDATED INFORMATIONS");
+        System.out.println(userToUpdate);
+        System.out.println();
         rewriteAllFiles();
     }
 }
