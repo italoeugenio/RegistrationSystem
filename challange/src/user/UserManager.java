@@ -9,7 +9,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,13 +28,12 @@ public class UserManager extends User {
         users.add(user);
         System.out.println();
         System.out.println("--Congratulations---");
-        System.out.println("User: " + user.getName().toUpperCase() + " added");
+        System.out.println(user + " added");
         System.out.println("----------------------");
         System.out.println();
-        createFileAboutUser(user);
     }
 
-    public static void createFileAboutUser(User user) throws IOException {
+    public static void fileAboutUser(User user) throws IOException {
         int num = users.size();
         String[] parts = user.getName().split(" ");
         String concatenated = "";
@@ -63,8 +61,13 @@ public class UserManager extends User {
 
     }
 
+    public static void creatingFileAboutUsers() throws IOException {
+        for(User userFile: users){
+            fileAboutUser(userFile);
+        }
+    }
+
     public static void listAllUsers() {
-        System.out.println();
         if (users.isEmpty()) {
             System.out.println("Empty list");
         } else {
@@ -147,7 +150,7 @@ public class UserManager extends User {
         boolean isemailValidator = EmailValidator.emailValidator(email);
         boolean isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
         if (email.equals(currentEmail)) {
-            System.out.println("If you enter your current e-mail, You can disregard the message that the user already exists");
+            System.out.println("If you enter your current e-mail, You can disregard the message that the user already registered");
             isvalidateUserExistByEmail = true;
         }
         while ((!isemailValidator || !isvalidateUserExistByEmail)) {
@@ -162,16 +165,14 @@ public class UserManager extends User {
         return email;
     }
 
-    public static void rewriteAllFiles() throws IOException {
-        for (User user : users) {
-            createFileAboutUser(user);
-        }
-    }
-
     public static void changeInformationAboutUser() throws IOException, InvalidNameException {
         Scanner scanner = new Scanner(System.in);
         UserManager userInstance = new UserManager();
         listAllUsers();
+        if(users.isEmpty()){
+            System.out.println();
+            return;
+        }
         System.out.print("Enter the user that you´d like to change: ");
         int selectUser = scanner.nextInt();
         scanner.nextLine();
@@ -188,8 +189,7 @@ public class UserManager extends User {
         users.set(selectUser - 1, updatedUser);
 
         System.out.println("UPDATED INFORMATIONS");
-        System.out.println(userToUpdate);
+        System.out.println(users.get(selectUser - 1));
         System.out.println();
-        rewriteAllFiles();
     }
 }

@@ -22,7 +22,7 @@ public class UserMenu {
             System.out.println("4- Delete a questions from the form");
             System.out.println("5- Search for a user by name, age, or email");
             System.out.println("6- Change information about user");
-            System.out.println("0- Exit");
+            System.out.println("0- Exit (Select this option to create the files about users)");
             System.out.print("Please, enter a option:");
 
             int option = scanner.nextInt();
@@ -48,6 +48,7 @@ public class UserMenu {
                     break;
                 case 0:
                     System.out.println("Exiting the program...");
+                    UserManager.creatingFileAboutUsers();
                     scanner.close();
                     return;
                 default:
