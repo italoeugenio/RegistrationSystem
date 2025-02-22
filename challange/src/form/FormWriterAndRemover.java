@@ -3,6 +3,7 @@ package form;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import form.FormWriterAndRemover;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,10 @@ import java.util.Scanner;
 
 public class FormWriterAndRemover {
     private static final List<String> questions = new ArrayList<>();
+
+    public static List<String> getQuestions() {
+        return questions;
+    }
 
     public static void addNewQuestionToForm() {
         int questionsSize = questions.size() + 4;

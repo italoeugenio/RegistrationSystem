@@ -1,6 +1,7 @@
 package user;
 
 import form.FormReader;
+import form.FormWriterAndRemover;
 import model.Person;
 import utils.AgeValidator;
 import utils.EmailValidator;
@@ -9,15 +10,27 @@ import utils.NameValidator;
 
 import javax.naming.InvalidNameException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class User extends Person {
+    private Map<String, String> additionalResponses = new HashMap<>();
+
     public User(String name, String email, int age, String height) {
         super(name, email, age, height);
     }
 
     public User() {
         super();
+    }
+
+    public Map<String, String> getAdditionalResponses() {
+        return additionalResponses;
+    }
+
+    public void setAdditionalResponses(Map<String, String> additionalResponses) {
+        this.additionalResponses = additionalResponses;
     }
 
     protected static void RegisterTheUsers() throws IOException, InvalidNameException {
@@ -27,11 +40,21 @@ public class User extends Person {
         int age = enterAge();
         String height = enterHeight();
 
+        for (String question : FormWriterAndRemover.getQuestions()) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print(question + ": ");
+            String answer = scanner.nextLine();
+            userInstance.getAdditionalResponses().put(question, answer);
+        }
+
         User user = new User(name, email, age, height);
+        user.setAdditionalResponses(userInstance.getAdditionalResponses());
+
         System.out.println("\n" + user.getName());
         System.out.println(user.getEmail());
         System.out.println(user.getAge());
         System.out.println(user.getHeight());
+        System.out.println("Additional Responses: " + user.getAdditionalResponses());
 
         UserManager.addUser(user);
 

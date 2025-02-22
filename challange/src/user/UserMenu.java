@@ -53,6 +53,7 @@ public class UserMenu {
                     return;
                 default:
                     System.out.println("Invalid option, please try again");
+                    System.out.println();
             }
         }
     }

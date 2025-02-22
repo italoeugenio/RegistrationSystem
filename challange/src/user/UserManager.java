@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class UserManager extends User {
@@ -44,7 +45,7 @@ public class UserManager extends User {
             concatenated = firstName.toUpperCase() + secondName.toUpperCase();
         }
 
-        Path path = Path.of("src", "registration", num + "-" + concatenated + ".txt");
+        Path path = Paths.get("src", "registration", num + "-" + concatenated + ".txt");
         Files.createDirectories(path.getParent());
         File file = path.toFile();
         try (FileWriter fw = new FileWriter(file);
@@ -52,13 +53,16 @@ public class UserManager extends User {
             bw.write(user.getName() + "\n");
             bw.write(user.getEmail() + "\n");
             bw.write(user.getAge() + "\n");
-            String height = String.valueOf(user.getHeight());
-            bw.write(height);
+            bw.write(user.getHeight() + "\n");
+
+            for (Map.Entry<String, String> entry : user.getAdditionalResponses().entrySet()) {
+                bw.write(entry.getKey() + ": " + entry.getValue() + "\n");
+            }
+
             bw.flush();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void creatingFileAboutUsers() throws IOException {
