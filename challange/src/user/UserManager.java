@@ -1,7 +1,7 @@
 package user;
 
+import form.FormReader;
 import utils.EmailValidator;
-
 import javax.naming.InvalidNameException;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,7 +34,7 @@ public class UserManager extends User {
     }
 
     public static void fileAboutUser(User user) throws IOException {
-        int num = users.size();
+        int num = users.indexOf(user) + 1;
         String[] parts = user.getName().split(" ");
         String concatenated = "";
 
@@ -77,6 +77,8 @@ public class UserManager extends User {
                 System.out.println(index + "-" + user.getName().toUpperCase());
                 index += 1;
             }
+            System.out.println();
+            FormReader.formReader();
             System.out.println();
         }
     }
@@ -156,6 +158,8 @@ public class UserManager extends User {
         while ((!isemailValidator || !isvalidateUserExistByEmail)) {
             System.out.print("Enter your e-mail again:");
             isemailValidator = EmailValidator.emailValidator(email);
+
+
             isvalidateUserExistByEmail = EmailValidator.validateUserExistByEmail(email);
 
             if (email.equals(currentEmail)) {
