@@ -49,6 +49,7 @@ public class UserMenu {
                 case 0:
                     System.out.println("Exiting the program...");
                     UserManager.creatingFileAboutUsers();
+                    FormWriterAndRemover.rewritingQuestions();
                     scanner.close();
                     return;
                 default:

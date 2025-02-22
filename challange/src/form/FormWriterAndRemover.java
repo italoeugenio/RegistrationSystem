@@ -72,4 +72,21 @@ public class FormWriterAndRemover {
         FormReader.formReader();
         System.out.println();
     }
+
+    public static void rewritingQuestions(){
+        Path path = Path.of("src", "resources", "forms.txt");
+        File file = path.toFile();
+        try (FileWriter fw = new FileWriter(file);
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write("1- What is your full name?\n");
+            bw.write("2- What is your email address?\n");
+            bw.write("3- How old are you?\n");
+            bw.write("4- How tall are you?");
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        FormReader.formReader();
+        System.out.println();
+    }
 }
