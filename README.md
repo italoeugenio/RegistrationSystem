@@ -9,7 +9,4 @@ This project was created to improve my Java and OOP skills. It is a registration
 - **`src/resources`:** Contains the `forms.txt` file with the first four questions for user input.
 - **`src/user`:** Contains the menu and user management logic.
 - **`src/utils`:** Contains validation functions for name, email, age, and height.
-
-## How to Run the Code
-
-You can run the code from the **`src/model/application`** directory.
+- **`src/application`:** Contains the entry point of the application, including the `main` method that runs the program.
