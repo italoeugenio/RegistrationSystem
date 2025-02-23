@@ -47,6 +47,11 @@ public class FormWriterAndRemover {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number from the question that you´d like to remove: ");
         int questionRemoved = scanner.nextInt();
+        if(questions.isEmpty()){
+            System.out.println("You can´t remove the 4 first questions that already was in the form or question that don't exist");
+            System.out.println();
+            return;
+        }
         while (questionRemoved <= 4) {
             System.out.print("You can´t remove the 4 first questions that already was in the form:");
             questionRemoved = scanner.nextInt();
