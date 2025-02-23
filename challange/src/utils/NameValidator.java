@@ -7,7 +7,7 @@ public class NameValidator {
         try {
             String[] nameSplit = name.split(" ");
             if ((name.length() - nameSplit.length + 1 <= 10)) {
-                throw new InvalidNameException("Please,THE LENGTH OF CHARACTERS NEEDS TO BE 10 OR MORE");
+                throw new InvalidNameException("Please,THE LENGTH OF NAME NEEDS TO BE 10 OR MORE");
             }
             return true;
 

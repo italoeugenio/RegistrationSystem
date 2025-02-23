@@ -30,7 +30,7 @@ public class EmailValidator extends UserManager {
         try {
             for (User user : users) {
                 if (user.getEmail().equals(email)) {
-                    throw new IllegalArgumentException("USER ALREADY REGISTERED");
+                    throw new IllegalArgumentException("USER IS ALREADY REGISTERED");
                 }
             }
             return true;

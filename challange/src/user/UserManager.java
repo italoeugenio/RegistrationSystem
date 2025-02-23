@@ -196,7 +196,7 @@ public class UserManager extends User {
         User updatedUser = new User(name, emailAgain, ageAgain, heightAgain);
         users.set(selectUser - 1, updatedUser);
 
-        System.out.println("UPDATED INFORMATIONS");
+        System.out.println("UPDATED INFORMATION");
         System.out.println(users.get(selectUser - 1));
         System.out.println();
     }
