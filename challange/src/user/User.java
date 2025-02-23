@@ -33,7 +33,9 @@ public class User extends Person {
         this.additionalResponses = additionalResponses;
     }
 
-    protected static void RegisterTheUsers() throws IOException, InvalidNameException {
+    protected static void registerTheUsers() throws IOException, InvalidNameException {
+        System.out.println();
+        FormReader.formReader();
         User userInstance = new User();
         String name = enterName();
         String email = userInstance.enterEmail();
@@ -54,12 +56,11 @@ public class User extends Person {
         System.out.println(user.getEmail());
         System.out.println(user.getAge());
         System.out.println(user.getHeight());
-        System.out.println("Additional Responses: " + user.getAdditionalResponses());
+        if(!user.additionalResponses.isEmpty()){
+            System.out.println("Additional Responses: " + user.getAdditionalResponses());
 
+        }
         UserManager.addUser(user);
-
-        System.out.println();
-        FormReader.formReader();
         System.out.println();
     }
 

@@ -29,7 +29,7 @@ public class UserMenu {
 
             switch (option) {
                 case 1:
-                    User.RegisterTheUsers();
+                    User.registerTheUsers();
                     break;
                 case 2:
                     UserManager.listAllUsers();
