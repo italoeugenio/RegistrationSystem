@@ -95,6 +95,7 @@ public class UserManager extends User {
         System.out.println("3- Search by e-mail");
         System.out.print("Enter the a option:");
         int option = scanner.nextInt();
+        scanner.nextLine();
 
         switch (option) {
             case 1:
