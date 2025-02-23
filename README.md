@@ -5,7 +5,7 @@ This project was created to improve my Java and OOP skills. It is a registration
 ## Project Structure
 
 - **`src/form`:** Contains the logic for reading and writing data.
-- **`src/model`:** Defines the `Person` model using Object-Oriented Programming principles. Also includes the `application` folder where the main logic runs.
+- **`src/model`:** Defines the `Person` model using Object-Oriented Programming principles. 
 - **`src/resources`:** Contains the `forms.txt` file with the first four questions for user input.
 - **`src/user`:** Contains the menu and user management logic.
 - **`src/utils`:** Contains validation functions for name, email, age, and height.
